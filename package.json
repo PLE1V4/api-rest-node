@@ -1,0 +1,15 @@
+{
+  "name": "api-rest-node",
+  "version": "1.0.0",
+  "description": "API REST NodeJS",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "PLEIVA",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "api-rest-nodejs"
+  }
+}
