@@ -11,5 +11,8 @@
   "repository": {
     "type": "git",
     "url": "api-rest-nodejs"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
   }
 }
