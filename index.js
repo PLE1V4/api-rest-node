@@ -3,25 +3,36 @@ const express = require("express");
 const cors = require("cors");
 
 
-//Inicializar APP
+//APP STARTUP
 console.log("App Started");
 
-//Conexion a BD
+//BD CONNECTION
 con();
 
-//Crear Node Server
+//NODE SERVER
 const app = express();
-const port = 7777;
+const port = 3001;
 
-//Configurar cors
+//CORS 
 app.use(cors());
 
 //BODY => JSON
 app.use(express.json());
 
 //ROUTES
+app.get("/test" , (req,res) => {
 
-//crear servidor y escuchar peticiones http
+    console.log("Testing");
+
+    return res.status(200).send(`
+        <div>
+            <h1>Testing route</div>
+            <p>first route</p>
+        </div>
+    `);
+})
+
+//LISTENER
 app.listen(port, () => {
     console.log("Server listening at port "+port);
 });
