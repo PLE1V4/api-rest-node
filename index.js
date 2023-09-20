@@ -1,6 +1,7 @@
 const {con} = require("./database/connection");
 const express = require("express");
 const cors = require("cors");
+const article_routes = require("./routes/article");
 
 
 //APP STARTUP
@@ -11,26 +12,17 @@ con();
 
 //NODE SERVER
 const app = express();
-const port = 3001;
+const port = 3900;
 
 //CORS 
 app.use(cors());
 
 //BODY => JSON
 app.use(express.json());
+app.use(express.urlencoded({extended:true}));
 
 //ROUTES
-app.get("/test" , (req,res) => {
-
-    console.log("Testing");
-
-    return res.status(200).send(`
-        <div>
-            <h1>Testing route</div>
-            <p>first route</p>
-        </div>
-    `);
-})
+app.use("/api",article_routes);
 
 //LISTENER
 app.listen(port, () => {

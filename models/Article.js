@@ -17,3 +17,5 @@ const ArticleSchema = Schema({
         default: "default.png"
     }
 });
+
+module.exports = model("Article", ArticleSchema);
