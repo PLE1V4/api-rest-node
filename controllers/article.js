@@ -63,7 +63,7 @@ const getArticles = (req, res) => {
         if(!articles){
             return res.status(404).json({
                 status: 'error',
-                mensaje: "Can't found Articles"
+                mensaje: "Can't find Articles"
             });
         }
 
@@ -80,7 +80,33 @@ const getArticles = (req, res) => {
     });
 }
 
+const one = (req, res) => {
+
+    let id = req.params.id;
+
+    Article.findById(id).then((article) => {
+        if(!article){
+            return res.status(404).json({
+                status: 'error',
+                mensaje: "Article Not Found"
+            }); 
+        }
+
+        return res.status(200).send({
+            status: "success",
+            article
+        });
+    }).catch((error) =>{
+        return res.status(404).json({
+            status: 'error',
+            mensaje: "Unexpected Error"
+        });
+    });
+
+}
+
 module.exports = {
     create,
-    getArticles
+    getArticles,
+    one,
 }
