@@ -1,14 +1,6 @@
 const validator = require("validator");
 const Article = require("../models/Article");
 
-const test = (req, res) => {
-
-    return res.status(200).json({
-        message: "Test Action"
-    });
-
-}
-
 const create = (req, res) => {
 
     let param = req.body;
@@ -56,7 +48,39 @@ const create = (req, res) => {
    
 }
 
+const getArticles = (req, res) => {
+    
+    let query = Article.find({});
+
+    if(req.params.recent){
+        query.limit(3);
+    }
+    
+                        
+    query.sort({date: -1})
+         .then((articles) => {
+
+        if(!articles){
+            return res.status(404).json({
+                status: 'error',
+                mensaje: "Can't found Articles"
+            });
+        }
+
+        return res.status(200).send({
+            status: "success",
+            articles
+        })
+
+    }).catch((error) =>{
+        return res.status(404).json({
+            status: 'error',
+            mensaje: "Unexpected Error"
+        });
+    });
+}
+
 module.exports = {
-    test,
-    create
+    create,
+    getArticles
 }
