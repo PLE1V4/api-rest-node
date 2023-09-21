@@ -1,10 +1,7 @@
 const validator = require("validator");
 const Article = require("../models/Article");
 
-const create = (req, res) => {
-
-    let param = req.body;
-
+const validateArticle = (res, param) => {
     try{
 
         let validate_title = !validator.isEmpty(param.title) &&
@@ -21,6 +18,13 @@ const create = (req, res) => {
             mensaje: "Data missing"
         })
     }
+}
+
+const create = (req, res) => {
+
+    let param = req.body;
+
+    validateArticle(res, param);
 
     const article = new Article(param);
 
@@ -105,8 +109,64 @@ const one = (req, res) => {
 
 }
 
+const del = (req, res) => {
+
+    let id = req.params.id;
+
+    Article.findOneAndDelete({_id: id}).then((delArticle) => {
+        if(!delArticle){
+            return res.status(404).json({
+                status: 'error',
+                mensaje: "Article Not Found"
+            }); 
+        }
+
+        return res.status(200).send({
+            status: "success",
+            article: delArticle,
+            message: "Article deleted"
+        });
+    }).catch((error) =>{
+        return res.status(500).json({
+            status: 'error',
+            mensaje: "Unexpected Error"
+        });
+    });
+
+}
+
+const edit = (req,res) => {
+
+    let id = req.params.id;
+    let param = req.body;
+   
+    validateArticle(res, param);
+
+    Article.findOneAndUpdate({_id: id}, req.body, {new:true}).then((newArticle) => {
+        if(!newArticle){
+            return res.status(404).json({
+                status: 'error',
+                mensaje: "Article Not Found"
+            }); 
+        }
+
+        return res.status(200).json({
+            status: "success",
+            article: newArticle
+        });
+    }).catch((error) =>{
+        return res.status(500).json({
+            status: 'error',
+            mensaje: "Unexpected Error"
+        });
+    });
+
+}
+
 module.exports = {
     create,
     getArticles,
     one,
+    del,
+    edit
 }
