@@ -1,30 +1,19 @@
-const validator = require("validator");
 const Article = require("../models/Article");
-
-const validateArticle = (res, param) => {
-    try{
-
-        let validate_title = !validator.isEmpty(param.title) &&
-                            validator.isLength(param.title, {min: 4, max: undefined});
-        let validate_content = !validator.isEmpty(param.content);
-
-        if(!validate_title ||  ! validate_content){
-            throw new Error("Not Validated Data");
-        }
-
-    }catch(error){
-        return res.status(400).json({
-            status: 'error',
-            mensaje: "Data missing"
-        })
-    }
-}
+const {validateArticle} = require("../helpers/validate");
 
 const create = (req, res) => {
 
     let param = req.body;
 
-    validateArticle(res, param);
+    try{
+        validateArticle(param);
+    }catch(error){
+        return res.status(400).json({
+            status: "error",
+            message: "Data Missing"
+        });
+    }
+
 
     const article = new Article(param);
 
@@ -140,7 +129,14 @@ const edit = (req,res) => {
     let id = req.params.id;
     let param = req.body;
    
-    validateArticle(res, param);
+    try{
+        validateArticle(param);
+    }catch(error){
+        return res.status(400).json({
+            status: "error",
+            message: "Data Missing"
+        });
+    }
 
     Article.findOneAndUpdate({_id: id}, req.body, {new:true}).then((newArticle) => {
         if(!newArticle){
