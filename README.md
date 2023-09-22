@@ -3,4 +3,4 @@
 BACK END: https://github.com/PLE1V4/api-rest-node
 FRONT: END: https://github.com/PLE1V4/blog-front-end
 
-RUN local mongoDB (Collection JSON can be found in the backenrepo inside database folder)
+RUN Collection JSON on local mongoDB (JSOn can be foun on database folder in the backend repo) or create new database/collection (My_blog/articles)
