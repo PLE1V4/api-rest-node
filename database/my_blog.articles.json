@@ -1,0 +1,60 @@
+[{
+  "_id": {
+    "$oid": "650b75e2a2b4f863bd84aed3"
+  },
+  "title": "pollo",
+  "content": "pollos pollos",
+  "img": "default.png",
+  "date": {
+    "$date": "2023-09-20T22:44:50.740Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "650d7f5e02276bdafa6b5e64"
+  },
+  "title": "22/09/23:8:45",
+  "content": "prueba 4",
+  "img": "article1695383390961dragonite_v.png",
+  "date": {
+    "$date": "2023-09-22T11:49:50.957Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "650d86daba5171719b3831c0"
+  },
+  "title": "sadasdsa",
+  "content": "dasdasdasdsadasddasd",
+  "img": "article1695385306377arceus_dialga_palkia_gx.jpg",
+  "date": {
+    "$date": "2023-09-22T12:21:46.369Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "650d873aba5171719b3831c4"
+  },
+  "title": "sadadfsEDITED2",
+  "content": "sadsadasdfsdfdsfEDITED2",
+  "img": "article1695393445516sylveon_v.png",
+  "date": {
+    "$date": "2023-09-22T12:23:22.479Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "650d875eba5171719b3831c7"
+  },
+  "title": "sadaasdsad",
+  "content": "sadsadasasdsaddsadas",
+  "img": "article1695385438970dragonite_v.png",
+  "date": {
+    "$date": "2023-09-22T12:23:58.964Z"
+  },
+  "__v": 0
+}]
